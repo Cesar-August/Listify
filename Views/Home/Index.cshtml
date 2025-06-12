@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Página Inicial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/indexini.css" />
+
+<body class="landing-page">
+    <!-- Botões Login e Cadastrar no topo direito -->
+    <div class="header-buttons">
+        <a href="/Account/Login" class="btn-neon">Login</a>
+        <a href="/Account/Register" class="btn-neon">Cadastrar-se</a>
+    </div>
+
+    <!-- Seção Hero (Texto + Imagem do notebook) -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="text-content">
+                <h1>Crie listas, ordene por prioridades,<br>defina lembretes e dê aquele check nas tarefas cumpridas.</h1>
+                <p class="sub-text">
+                    Tudo começa com um bom Start. Organize-se com o <span class="highlight">ListiFy!</span>
+                </p>
+                <a href="/Account/Login" class="start-button">Comece já</a>
+            </div>
+
+            <div class="image-content">
+                <img src="~/images/notelistify.png" alt="Notebook usando o listify" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>

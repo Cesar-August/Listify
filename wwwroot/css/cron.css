@@ -1,0 +1,265 @@
+/* Remove margem e padding do body */
+body {
+    background-color: #1e1e2f;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho do calendário */
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -70px; /* levanta o calendário */
+    color: white;
+}
+
+    .calendar-header button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+        .calendar-header button:hover {
+            color: #4caf50;
+        }
+
+#currentMonth {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Grid do calendário */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: white;
+}
+
+/* Dias e dias da semana */
+.weekday, .day {
+    background: #2d2d40;
+    padding: 10px;
+    min-height: 80px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.weekday {
+    background: #444;
+    font-weight: bold;
+    text-align: center;
+    min-height: 30px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-number {
+    font-weight: bold;
+}
+
+.event {
+    background-color: #4caf50;
+    color: #444;
+    padding: 2px 4px;
+    margin-top: 4px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.empty {
+    background: transparent;
+}
+
+#eventModal, #modalOverlay {
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#modalOverlay {
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    position: fixed;
+}
+
+/* Estilo do Modal */
+#eventModal {
+    z-index: 101;
+    background: #2d2d40;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    /* NOVO: transição suave */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+    /* Ativa visualmente o modal */
+    #eventModal.active {
+        display: flex;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    #eventModal h3 {
+        margin: 0;
+        color: white;
+    }
+
+    #eventModal hr {
+        border: 0;
+        height: 1px;
+        background: #555;
+        margin: 0;
+    }
+
+    /* Inputs */
+    #eventModal input[type="text"],
+    #eventModal input[type="time"] {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        background: #444;
+        color: white;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    #eventModal input::placeholder {
+        color: #ccc;
+    }
+
+/* Ícone do relógio branco */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* Botões */
+#eventModal button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#eventModal .save {
+    background-color: #00ffff;
+    color: black;
+}
+
+#eventModal .cancel {
+    background: #888;
+    color: white;
+}
+
+    #eventModal .save:hover,
+    #eventModal .cancel:hover {
+        opacity: 0.9;
+    }
+
+/* Agrupar botões lado a lado com espaçamento */
+#eventModal .button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.sidebar {
+        position: relative;
+        top: -31px;
+        /* Aumente o valor de 'left' para mover mais para a direita */
+        left: 1px; /* adicionado */
+        width: 80px;
+        padding: 12px 100px;
+        background-color: #151525;
+        color: white;
+        min-height: 71vh;
+}
+
+.sidebar-content {
+    margin-top: 10px;
+}
+
+.sidebar-list {
+    background-color: #2d2d40;
+    width: 100px;
+    border-radius: 6px;
+    padding: 8px 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+}
+    .sidebar-list span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex: 1;
+    }
+
+    .sidebar-list .toggle-btn {
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        color: #00ffff;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 70px; /* Reduzido de 70px para 10px */
+        margin-top: -20px;
+        position: relative;
+    }
+
+/* Caixa que expande */
+.expanded-box {
+    display: none;
+    background-color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    color: white;
+}
+
+/* Classe que mostra a caixa */
+.sidebar-list.expanded + .expanded-box {
+    display: block;
+}
+
+.sidebar-cards {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.sidebar-card {
+    background-color: #444;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 4px;
+    font-size: 14px;
+}

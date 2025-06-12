@@ -1,0 +1,515 @@
+﻿@{
+    Layout = null;
+}
+
+    <link rel="stylesheet" href="~/css/dash.css" />
+
+    <div id="board" class="board">
+        <div class="add-list-area" id="addListArea">
+            <button class="btn-add-list" onclick="showAddListForm()">+ Adicionar uma lista</button>
+            <div id="addListForm" class="add-list-form" style="display: none;">
+                <input type="text" id="listNameInput" placeholder="Digite o nome da lista..." />
+                <div class="add-list-buttons">
+                    <button id="addListButton" onclick="addList()">Adicionar Lista</button>
+                    <button id="cancelAddListButton" onclick="hideAddListForm()">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div id="contextMenu" class="context-menu">
+        <ul>
+            <li id="renameCard">Renomear</li>
+            <li id="deleteCard">Excluir</li>
+            <li id="moveCard">Mover para outra lista</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+               document.addEventListener('DOMContentLoaded', function () {
+            const contextMenu = document.getElementById('contextMenu');
+
+            let selectedCard = null;
+            let selectedCardType = null; // 'card' ou 'list'
+
+            document.addEventListener('contextmenu', function (e) {
+                const target = e.target;
+
+                // Clique com botão direito em card
+                if (target.tagName === 'LI' && target.parentElement.classList.contains('cards')) {
+                    e.preventDefault();
+                    selectedCard = target;
+                    selectedCardType = 'card';
+                    showContextMenu(e.pageX, e.pageY);
+                }
+                // Clique com botão direito em título da lista
+                else if (target.tagName === 'H2') {
+                    e.preventDefault();
+                    selectedCard = target.closest('.list');
+                    selectedCardType = 'list';
+                    showContextMenu(e.pageX, e.pageY);
+                } else {
+                    hideContextMenu();
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.context-menu')) {
+                    hideContextMenu();
+                }
+            });
+
+            document.getElementById('renameCard').addEventListener('click', () => {
+                if (!selectedCard) return;
+
+                if (selectedCardType === 'card') {
+                    startEditCard(selectedCard);
+                } else if (selectedCardType === 'list') {
+                    const titleElement = selectedCard.querySelector('h2');
+                    if (titleElement) {
+                        titleElement.dispatchEvent(new Event('dblclick')); // ativa edição de lista
+                    }
+                }
+
+                hideContextMenu();
+            });
+
+            document.getElementById('deleteCard').addEventListener('click', () => {
+                if (!selectedCard) return;
+
+                const confirmMsg = selectedCardType === 'card'
+                    ? 'Tem certeza que deseja excluir este card?'
+                    : 'Tem certeza que deseja excluir este quadro e todos os seus cartões?';
+
+                if (confirm(confirmMsg)) {
+                    selectedCard.remove();
+                }
+
+                hideContextMenu();
+            });
+
+            document.getElementById('moveCard').addEventListener('click', () => {
+                if (!selectedCard || selectedCardType !== 'card') return;
+
+                const lists = document.querySelectorAll('.cards');
+                let options = '';
+                lists.forEach((list, index) => {
+                    const title = list.parentElement.querySelector('h2')?.textContent || `Lista ${index + 1}`;
+                    options += `${index + 1}: ${title}\n`;
+                });
+
+                const choice = prompt(`Mover para qual lista?\n${options}`);
+                const index = parseInt(choice) - 1;
+                if (lists[index]) {
+                    lists[index].appendChild(selectedCard);
+                } else {
+                    alert('Lista inválida.');
+                }
+
+                hideContextMenu();
+            });
+
+            function showContextMenu(x, y) {
+                const contextMenu = document.getElementById('contextMenu');
+
+                // Exibe ou oculta a opção "Mover" dependendo do tipo
+                const moveOption = document.getElementById('moveCard');
+                moveOption.style.display = selectedCardType === 'card' ? 'block' : 'none';
+
+                contextMenu.style.top = `${y}px`;
+                contextMenu.style.left = `${x}px`;
+                contextMenu.classList.add('show');
+            }
+
+            function hideContextMenu() {
+                const contextMenu = document.getElementById('contextMenu');
+                contextMenu.classList.remove('show');
+                selectedCard = null;
+                selectedCardType = null;
+            }
+        });
+
+
+        function showContextMenu(x, y) {
+            const contextMenu = document.getElementById('contextMenu');
+            contextMenu.style.top = `${y}px`;
+            contextMenu.style.left = `${x}px`;
+            contextMenu.classList.add('show');
+        }
+
+        function hideContextMenu() {
+            const contextMenu = document.getElementById('contextMenu');
+            contextMenu.classList.remove('show');
+        }
+
+        function showAddListForm() {
+            document.getElementById("addListForm").style.display = "flex";
+        }
+
+        function hideAddListForm() {
+            document.getElementById("addListForm").style.display = "none";
+            document.getElementById("listNameInput").value = "";
+        }
+
+        function addList() {
+            const listName = document.getElementById("listNameInput").value.trim();
+            if (!listName) return;
+
+            const listId = "list-" + Date.now();
+
+            const list = document.createElement("div");
+            list.className = "list";
+            list.setAttribute("draggable", "true");
+            list.style.position = "relative";
+
+            const titleContainer = document.createElement("div");
+            titleContainer.style.display = "flex";
+            titleContainer.style.justifyContent = "space-between";
+            titleContainer.style.alignItems = "center";
+
+            // Novo: Wrapper para o título e input
+            const titleWrapper = document.createElement("div");
+            titleWrapper.style.flex = "1";
+
+            const title = document.createElement("h2");
+            title.textContent = listName;
+            title.style.margin = "0";
+
+            const titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.style.display = "none";
+            titleInput.value = listName;
+            titleInput.style.margin = "0";
+            titleInput.style.padding = "4px";
+            titleInput.style.fontSize = "1rem";
+            titleInput.style.width = "100%";
+
+
+            // Evento de duplo clique no título para editar
+            title.ondblclick = function () {
+                title.style.display = "none";
+                titleInput.style.display = "block";
+                titleInput.focus();
+                titleInput.select();
+            };
+
+            titleInput.addEventListener('blur', function () {
+                title.textContent = titleInput.value.trim() || "Sem Nome";
+                title.style.display = "block";
+                titleInput.style.display = "none";
+            });
+
+            titleInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                title.textContent = titleInput.value.trim() || 'Sem Nome';
+                title.style.display = "block";
+                titleInput.style.display = "none";
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                titleInput.value = title.textContent; // volta para o texto anterior
+                title.style.display = "block";
+                titleInput.style.display = "none";
+            }
+            });
+
+
+            titleWrapper.appendChild(title);
+            titleWrapper.appendChild(titleInput);
+
+            const cards = document.createElement("ul");
+            cards.className = "cards";
+            cards.id = listId;
+
+            const addCardButton = createAddCardButton(listId);
+            const cardCount = createCardCount(cards);
+            const collapseButton = createCollapseButton(list, title, cards, addCardButton, cardCount);
+
+            titleContainer.appendChild(titleWrapper);
+            titleContainer.appendChild(collapseButton);
+
+            list.appendChild(titleContainer);
+            list.appendChild(cards);
+            list.appendChild(addCardButton);
+            list.appendChild(cardCount);
+
+            const board = document.getElementById("board");
+            board.insertBefore(list, document.getElementById("addListArea"));
+
+            initializeListDragEvents(list);
+            initializeCardsDragEvents(cards);
+
+            hideAddListForm();
+        }
+
+        function createCollapseButton(list, title, cards, addCardButton, cardCount) {
+            const collapseButton = document.createElement("button");
+            collapseButton.textContent = "⇄";
+            collapseButton.style.background = "none";
+            collapseButton.style.border = "none";
+            collapseButton.style.color = "#4fd";
+            collapseButton.style.cursor = "pointer";
+            collapseButton.style.fontSize = "20px";
+
+            let collapsed = false;
+
+                    collapseButton.onclick = function () {
+            collapsed = !collapsed;
+            if (collapsed) {
+                cards.classList.add('hidden');
+                addCardButton.style.display = "none";
+                list.classList.add('recolhida');
+                list.style.minWidth = "50px";
+                list.style.maxWidth = "50px";
+                title.style.writingMode = "vertical-rl";
+                title.style.textOrientation = "mixed";
+                title.style.fontSize = "14px";
+                cardCount.style.display = "block";
+                cardCount.textContent = cards.children.length;
+            } else {
+                cards.classList.remove('hidden');
+                addCardButton.style.display = "block";
+                list.classList.remove('recolhida');
+                list.style.minWidth = "280px"; // Voltar ao tamanho normal
+                list.style.maxWidth = "280px"; // Voltar ao tamanho normal
+                title.style.writingMode = "horizontal-tb";
+                title.style.textOrientation = "initial";
+                title.style.fontSize = "1.2rem";
+                cardCount.style.display = "none";
+            }
+        };
+
+
+            return collapseButton;
+        }
+
+        function createAddCardButton(listId) {
+            const button = document.createElement("button");
+            button.className = "btn-add-card";
+            button.textContent = "+ Adicionar";
+            button.onclick = () => addCard(listId);
+            return button;
+        }
+
+        function createCardCount(cards) {
+            const div = document.createElement("div");
+            div.className = "card-count";
+            div.style.display = "none";
+            div.style.position = "absolute";
+            div.style.bottom = "10px";
+            div.style.left = "50%";
+            div.style.transform = "translateX(-50%)";
+            div.style.color = "#ccc";
+            div.style.fontSize = "12px";
+            div.style.fontWeight = "bold";
+            return div;
+        }
+
+        function addCard(listId) {
+            const text = prompt("Digite o título do cartão:");
+            if (text) {
+                const card = document.createElement("li");
+                card.textContent = text;
+                card.setAttribute('draggable', 'true');
+                card.setAttribute('ondblclick', 'startEditCard(this)');
+                initializeCardEvents(card);
+                document.getElementById(listId).appendChild(card);
+            }
+        }
+
+        function initializeCardEvents(card) {
+            card.addEventListener("dragstart", () => card.classList.add("dragging"));
+            card.addEventListener("dragend", () => card.classList.remove("dragging"));
+        }
+
+        function initializeCardsDragEvents(cardsContainer) {
+            cardsContainer.addEventListener("dragover", e => {
+                e.preventDefault();
+                const draggingCard = document.querySelector(".dragging");
+                if (!draggingCard) return;
+                const afterElement = getDragAfterElement(cardsContainer, e.clientY);
+                if (afterElement == null) {
+                    cardsContainer.appendChild(draggingCard);
+                } else {
+                    cardsContainer.insertBefore(draggingCard, afterElement);
+                }
+            });
+        }
+
+        function getDragAfterElement(container, y) {
+            const draggableElements = [...container.querySelectorAll("li:not(.dragging)")];
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        function initializeListDragEvents(list) {
+            list.addEventListener('dragstart', e => {
+                if (e.target.classList.contains('list')) {
+                    e.target.classList.add('dragging-list');
+                }
+            });
+            list.addEventListener('dragend', e => {
+                if (e.target.classList.contains('list')) {
+                    e.target.classList.remove('dragging-list');
+                }
+            });
+        }
+
+        const board = document.getElementById('board');
+        board.addEventListener('dragover', e => {
+            e.preventDefault();
+            const draggingList = document.querySelector('.dragging-list');
+            if (!draggingList) return;
+            const afterList = getAfterListElement(board, e.clientX);
+            if (afterList == null) {
+                board.insertBefore(draggingList, document.getElementById("addListArea"));
+            } else {
+                board.insertBefore(draggingList, afterList);
+            }
+        });
+
+        function getAfterListElement(container, x) {
+            const draggableLists = [...container.querySelectorAll('.list:not(.dragging-list)')];
+            return draggableLists.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = x - box.left - box.width / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        function startEditCard(cardElement) {
+            if (cardElement.querySelector('input')) return;
+
+            const originalText = cardElement.textContent;
+            cardElement.innerHTML = '';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = originalText;
+            input.style.width = '100%';
+            input.style.padding = '8px';
+            input.style.border = '1px solid #ccc';
+            input.style.borderRadius = '6px';
+            input.style.boxSizing = 'border-box';
+            input.style.fontSize = '16px';
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Salvar';
+            saveButton.onclick = () => saveCardEdit(saveButton);
+            saveButton.style.marginTop = '10px';
+            saveButton.style.width = '100%';
+            saveButton.style.padding = '8px';
+            saveButton.style.backgroundColor = '#3b82f6';
+            saveButton.style.color = 'white';
+            saveButton.style.fontWeight = 'bold';
+            saveButton.style.border = 'none';
+            saveButton.style.borderRadius = '6px';
+            saveButton.style.fontSize = '16px';
+            saveButton.style.cursor = 'pointer';
+
+            cardElement.setAttribute('draggable', 'false');
+            cardElement.style.cursor = 'auto';
+            cardElement.style.display = 'flex';
+            cardElement.style.flexDirection = 'column';
+            cardElement.style.gap = '8px';
+
+            input.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveCardEdit(saveButton);
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                cancelCardEdit(cardElement, originalText);
+            }
+            });
+
+            function cancelCardEdit(cardElement, originalText) {
+            cardElement.innerHTML = originalText;
+            cardElement.setAttribute('ondblclick', 'startEditCard(this)');
+            cardElement.setAttribute('draggable', 'true');
+            }
+
+
+            cardElement.appendChild(input);
+            cardElement.appendChild(saveButton);
+            setTimeout(() => { input.focus(); input.select(); }, 0);
+        }
+
+        function saveCardEdit(button) {
+            const cardElement = button.parentElement;
+            const input = cardElement.querySelector('input');
+            const newName = input.value.trim() || 'Sem Nome';
+
+            cardElement.innerHTML = newName;
+            cardElement.setAttribute('ondblclick', 'startEditCard(this)');
+            cardElement.setAttribute('draggable', 'true');
+
+                    // Função para ativar edição no título da lista
+        function enableListTitleEdit(titleElement) {
+            const list = titleElement.closest('.list');
+            let input = list.querySelector('.edit-list-title');
+
+            if (!input) {
+                input = document.createElement('input');
+                input.className = 'edit-list-title';
+                input.style.background = 'transparent';
+                input.style.border = 'none';
+                input.style.borderBottom = '1px solid #fff';
+                input.style.color = '#fff';
+                input.style.fontSize = '20px';
+                input.style.textAlign = 'center';
+                input.style.outline = 'none';
+                input.style.fontWeight = 'bold';
+                input.style.width = '100%';
+                input.style.marginTop = '5px';
+                input.style.display = 'none';
+                list.insertBefore(input, list.firstChild);
+            }
+
+            input.value = titleElement.innerText.trim();
+            titleElement.style.display = 'none';
+            input.style.display = 'block';
+            input.focus();
+            input.select();
+
+            input.onblur = () => finishListTitleEdit(input, titleElement);
+            input.onkeydown = (e) => {
+                if (e.key === 'Enter') {
+                    finishListTitleEdit(input, titleElement);
+                }
+            };
+        }
+
+        // Função para finalizar edição do título
+        function finishListTitleEdit(inputElement, titleElement) {
+            const newTitle = inputElement.value.trim();
+            if (newTitle) {
+                titleElement.innerText = newTitle;
+            }
+            inputElement.style.display = 'none';
+            titleElement.style.display = 'block';
+        }
+        
+        // Ativar evento de duplo clique nos títulos já existentes
+        document.addEventListener('dblclick', function (e) {
+            if (e.target.classList.contains('list-title')) {
+                enableListTitleEdit(e.target);
+            }
+        });
+
+        }
+
+    </script>
