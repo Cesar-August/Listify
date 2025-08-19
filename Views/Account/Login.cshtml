@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="login-container">
+    <h1 class="title-text">Login</h1>
+    <form id="loginForm" method="post" class="login-form">
+        <input type="text" name="username" placeholder="Usuário" required />
+        <input type="password" name="password" placeholder="Senha" required />
+        <button type="submit" class="btn-primary">Entrar</button>
+    </form>
+    <p class="white-text">Ainda não tem conta? <a href="/Account/Register" class="link-primary">Cadastre-se</a></p>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Aqui você poderia validar usuário/senha se quiser
+
+            // Redireciona para a página Dashboard
+            window.location.href = '/Dashboard';
+        });
+    </script>
+}
