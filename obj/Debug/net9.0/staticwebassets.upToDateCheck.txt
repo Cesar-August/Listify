@@ -1,0 +1,11 @@
+C:\Users\User\source\repos\TodoListApp\wwwroot\css\dash.css
+C:\Users\User\source\repos\TodoListApp\wwwroot\css\site.css
+C:\Users\User\source\repos\TodoListApp\wwwroot\css\cron.css
+C:\Users\User\source\repos\TodoListApp\wwwroot\css\Indexdash.css
+C:\Users\User\source\repos\TodoListApp\wwwroot\css\indexini.css
+wwwroot\css\cron.css
+wwwroot\css\dash.css
+wwwroot\css\Indexdash.css
+wwwroot\css\indexini.css
+wwwroot\css\site.css
+wwwroot\images\notelistify.png

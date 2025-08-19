@@ -1,0 +1,5 @@
+C:\Users\User\source\repos\TodoListApp - Copia\wwwroot\css\dash.css
+C:\Users\User\source\repos\TodoListApp - Copia\wwwroot\css\site.css
+C:\Users\User\source\repos\TodoListApp - Copia\wwwroot\css\cron.css
+C:\Users\User\source\repos\TodoListApp - Copia\wwwroot\css\Indexdash.css
+C:\Users\User\source\repos\TodoListApp - Copia\wwwroot\css\indexini.css

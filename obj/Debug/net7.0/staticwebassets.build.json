@@ -1,0 +1,434 @@
+{
+  "Version": 1,
+  "Hash": "cDSuhpVszAZBmG+hJINMiWByCgG0cT7FU47esLFoh5c=",
+  "Source": "TodoListApp",
+  "BasePath": "_content/TodoListApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TodoListApp\\wwwroot",
+      "Source": "TodoListApp",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\",
+      "BasePath": "_content/TodoListApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\cron.css",
+      "SourceId": "TodoListApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\",
+      "BasePath": "_content/TodoListApp",
+      "RelativePath": "css/cron#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8n3e9ekbg3",
+      "Integrity": "9KrrNf48U8gpaZTITrouevJ3tckrNAQysB2+IkOecAE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\cron.css"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\dash.css",
+      "SourceId": "TodoListApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\",
+      "BasePath": "_content/TodoListApp",
+      "RelativePath": "css/dash#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "9841dsovj3",
+      "Integrity": "V9dl+WzOzg7AxO0aWfq0GGsEzmffipzRitfFYH+IoA0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dash.css"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\Indexdash.css",
+      "SourceId": "TodoListApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\",
+      "BasePath": "_content/TodoListApp",
+      "RelativePath": "css/Indexdash#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rw71i0fviq",
+      "Integrity": "S+AzsSEwEJQR9hbNpAfQPKkqRkm7aO0MAT4eeMAPCB8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Indexdash.css"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\site.css",
+      "SourceId": "TodoListApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\",
+      "BasePath": "_content/TodoListApp",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rr9dz9vkzo",
+      "Integrity": "tylNg1qzWegTDjYwjkY9FrUuDMLi4VpKlwEdzNJFbFo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/cron.8n3e9ekbg3.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\cron.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9KrrNf48U8gpaZTITrouevJ3tckrNAQysB2+IkOecAE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 02:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8n3e9ekbg3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/cron.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9KrrNf48U8gpaZTITrouevJ3tckrNAQysB2+IkOecAE="
+        }
+      ]
+    },
+    {
+      "Route": "css/cron.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\cron.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9KrrNf48U8gpaZTITrouevJ3tckrNAQysB2+IkOecAE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 02:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9KrrNf48U8gpaZTITrouevJ3tckrNAQysB2+IkOecAE="
+        }
+      ]
+    },
+    {
+      "Route": "css/dash.9841dsovj3.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\dash.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6962"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V9dl+WzOzg7AxO0aWfq0GGsEzmffipzRitfFYH+IoA0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 01:15:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9841dsovj3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/dash.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V9dl+WzOzg7AxO0aWfq0GGsEzmffipzRitfFYH+IoA0="
+        }
+      ]
+    },
+    {
+      "Route": "css/dash.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\dash.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6962"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V9dl+WzOzg7AxO0aWfq0GGsEzmffipzRitfFYH+IoA0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 01:15:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V9dl+WzOzg7AxO0aWfq0GGsEzmffipzRitfFYH+IoA0="
+        }
+      ]
+    },
+    {
+      "Route": "css/Indexdash.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\Indexdash.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S+AzsSEwEJQR9hbNpAfQPKkqRkm7aO0MAT4eeMAPCB8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 03:14:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-S+AzsSEwEJQR9hbNpAfQPKkqRkm7aO0MAT4eeMAPCB8="
+        }
+      ]
+    },
+    {
+      "Route": "css/Indexdash.rw71i0fviq.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\Indexdash.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S+AzsSEwEJQR9hbNpAfQPKkqRkm7aO0MAT4eeMAPCB8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 03:14:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rw71i0fviq"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Indexdash.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-S+AzsSEwEJQR9hbNpAfQPKkqRkm7aO0MAT4eeMAPCB8="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6756"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tylNg1qzWegTDjYwjkY9FrUuDMLi4VpKlwEdzNJFbFo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 03:14:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tylNg1qzWegTDjYwjkY9FrUuDMLi4VpKlwEdzNJFbFo="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.rr9dz9vkzo.css",
+      "AssetFile": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6756"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tylNg1qzWegTDjYwjkY9FrUuDMLi4VpKlwEdzNJFbFo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 03:14:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rr9dz9vkzo"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tylNg1qzWegTDjYwjkY9FrUuDMLi4VpKlwEdzNJFbFo="
+        }
+      ]
+    }
+  ]
+}

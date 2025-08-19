@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\Indexdash.css",
+      "PackagePath": "staticwebassets\\css\\Indexdash.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\cron.css",
+      "PackagePath": "staticwebassets\\css\\cron.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\dash.css",
+      "PackagePath": "staticwebassets\\css\\dash.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\indexini.css",
+      "PackagePath": "staticwebassets\\css\\indexini.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\TodoListApp\\wwwroot\\images\\notelistify.png",
+      "PackagePath": "staticwebassets\\images\\notelistify.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.TodoListApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.TodoListApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.TodoListApp.props",
+      "PackagePath": "build\\TodoListApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.TodoListApp.props",
+      "PackagePath": "buildMultiTargeting\\TodoListApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.TodoListApp.props",
+      "PackagePath": "buildTransitive\\TodoListApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
